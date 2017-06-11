@@ -1,0 +1,49 @@
+{
+  "name": "jeepers",
+  "version": "0.1.0",
+  "description": "The JavaScript error system",
+  "main": "lib/index.js",
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type" : "git",
+    "url" : "git@github.com:MitMaro/jeepers.git"
+  },
+  "engines": {
+    "node": "6"
+  },
+  "keywords": ["errors", "handling", "logging"],
+  "scripts": {
+    "build": "babel src/ --out-dir lib/",
+    "lint": "eslint .",
+    "test": "eslint . && npm run test:coverage",
+    "test:unit": "BABEL_ENV=test mocha",
+    "test:coverage": "BABEL_ENV=test nyc mocha"
+  },
+  "author": "Tim Oram <mitmaro@gmail.com>",
+  "contributors": [
+    "Tim Oram <mitmaro@gmail.com>"
+  ],
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-eslint": "^7.2.3",
+    "babel-plugin-istanbul": "^4.1.4",
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.24.1",
+    "chai": "^4.0.2",
+    "eslint": "^3.19.0",
+    "eslint-config-mitmaro": "^2.0.0",
+    "eslint-plugin-babel": "^4.1.1",
+    "eslint-plugin-filenames": "^1.2.0",
+    "eslint-plugin-mocha": "^4.9.0",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-security": "^1.3.0",
+    "mocha": "^3.4.2",
+    "nyc": "11.0.2",
+    "sinon": "^2.3.2",
+    "sinon-chai": "^2.10.0"
+  },
+  "dependencies": {}
+}
