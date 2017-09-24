@@ -1,7 +1,7 @@
 import {
 	BaseError,
-	RuntimeError,
 	ErrorHandler,
+	RuntimeError,
 } from '../../src/index';
 
 describe('index', function () {

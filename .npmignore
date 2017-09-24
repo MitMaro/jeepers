@@ -8,4 +8,7 @@ test/
 .eslintignore
 .eslintrc.js
 .nycrc
+.travis.yml
 jeepers-*.tgz
+yarn.lock
+yarn-error.*
