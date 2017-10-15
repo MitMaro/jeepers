@@ -1,4 +1,6 @@
-export default class BaseError extends Error {
+'use strict';
+
+module.exports = class BaseError extends Error {
 	constructor(message, type, cause) {
 		super(message);
 
@@ -32,4 +34,4 @@ export default class BaseError extends Error {
 
 		Error.captureStackTrace(this, this.constructor);
 	}
-}
+};

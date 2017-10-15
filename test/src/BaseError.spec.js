@@ -1,4 +1,4 @@
-import {BaseError} from '../../src/index';
+const {BaseError} = require('../../src/index');
 
 // reference: https://github.com/onury/custom-error-test
 function getType(o) {

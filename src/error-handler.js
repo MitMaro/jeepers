@@ -1,7 +1,12 @@
-export default class ErrorHandler {
+'use strict';
+
+const unhandledErrorHandler = require('./unhandled-error-handler')();
+
+module.exports = class ErrorHandler {
 	constructor(logger) {
 		this.logger = logger;
 		this.handlers = [];
+		this.unhandledErrorHandler = unhandledErrorHandler;
 	}
 
 	register(handlers) {
@@ -10,11 +15,21 @@ export default class ErrorHandler {
 		}
 	}
 
+	setUnhandledErrorHandler(handler) {
+		this.unhandledErrorHandler = handler;
+	}
+
 	async handle(error) {
+		let handled = false;
 		for (const handler of this.handlers) {
-			if (await handler(this.logger, error) === false) {
+			if (await handler(this.logger, error)) {
+				handled = true;
 				break;
 			}
+		}
+
+		if (!handled) {
+			await this.unhandledErrorHandler(this.logger, error);
 		}
 
 		if (error.cause instanceof Error) {
@@ -29,4 +44,4 @@ export default class ErrorHandler {
 		}
 		this.handlers.push(handler);
 	}
-}
+};

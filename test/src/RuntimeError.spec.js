@@ -1,4 +1,4 @@
-import {RuntimeError} from '../../src/index';
+const {RuntimeError} = require('../../src/index');
 
 describe('RuntimeError', function () {
 	it('should have message', function () {

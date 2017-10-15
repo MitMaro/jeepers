@@ -8,7 +8,6 @@ node_js:
 - '6'
 - '8'
 script: npm run test
-before_deploy: ./scripts/build.bash
 deploy:
   provider: npm
   email: mitmaro@gmail.com
