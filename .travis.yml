@@ -5,17 +5,30 @@ branches:
   - master
   - /^v\d+\.\d+\.\d+$/
 node_js:
-- '6'
-- '8'
-script: npm run test
-before_deploy: ./scripts/build.bash
-deploy:
-  provider: npm
-  email: mitmaro@gmail.com
-  skip_cleanup: true
-  api_key:
-    secure: OtU1WSMzJAVlc5PC9H9+5ks+7lsviJXLsVqeUJj/5t7qkQak2isuOIG4OYxQ8lAe+Qlx5y7eJhKV1LD4uDA5tdDC7zyP/WHBivF/vBRyB6Pysuxl6NMKvoygObV79Q2aPoWj9eBxplhYbHRX6jQUXRJjnlWAQ/S/xm+X8xmgWxpps+HoVu8iywi0iSAJMq++/k0nHFu0Xjaa4iV6mD1vZQimV8Y+HkMu/wHw+alp7Me78Tk5DUKhlUYD8Xqruwo/wwoXHWlQEKGhZjRHfKt0bJPhQ65yV0J3MSRAe0KL/J9I5WcbowgGXOJkRHvQiA37M+IUCsjUb4A+ydiJ35G9AvGLx7w7QcCDHyEshQd4a/FQTkpmv5071T5etKhT7A8w5ooOJHHtlBXIZvCmt77RRxe+D4gHblrIoKoMjd52w7+Y8pZMLY1QMO4bzphr51fpr00Cd3vIuOAkR8tznQ6CIwKWhLE2lXoRih8gcoFJwVVPmt9o4zC95BNz53FUt0EdCpfcn6P4JqVDswyn/8xSlabnvdZhiKmO8EMhHhFWJO4+gerDqCAIyAPMo4JHgmkFGqrVLyukspJh4wkzFKLR9qWkAWUAzRRwKZGhtctsFb56pH+PI9at3DeZC3uAmvByd0pYvHCVnrx6mK404A3O/iqI/DBDvneu3f9TZmhmg0M=
-  on:
-    tags: true
-    node: '8'
-    repo: MitMaro/jeepers
+    - '6'
+    - '8'
+jobs:
+  include:
+    - stage: test
+      node_js: 6
+      script: ./scripts/test.bash :unit --require @babel/register
+    - stage: test
+      node_js: 8
+      script: ./scripts/test.bash :coverage --require @babel/register
+    - stage: build
+      script: ./scripts/build.bash
+    - stage: deploy
+      node_js: 8
+      deploy:
+        provider: npm
+        email: mitmaro@gmail.com
+        skip_cleanup: true
+        api_key:
+          secure: OtU1WSMzJAVlc5PC9H9+5ks+7lsviJXLsVqeUJj/5t7qkQak2isuOIG4OYxQ8lAe+Qlx5y7eJhKV1LD4uDA5tdDC7zyP/WHBivF/vBRyB6Pysuxl6NMKvoygObV79Q2aPoWj9eBxplhYbHRX6jQUXRJjnlWAQ/S/xm+X8xmgWxpps+HoVu8iywi0iSAJMq++/k0nHFu0Xjaa4iV6mD1vZQimV8Y+HkMu/wHw+alp7Me78Tk5DUKhlUYD8Xqruwo/wwoXHWlQEKGhZjRHfKt0bJPhQ65yV0J3MSRAe0KL/J9I5WcbowgGXOJkRHvQiA37M+IUCsjUb4A+ydiJ35G9AvGLx7w7QcCDHyEshQd4a/FQTkpmv5071T5etKhT7A8w5ooOJHHtlBXIZvCmt77RRxe+D4gHblrIoKoMjd52w7+Y8pZMLY1QMO4bzphr51fpr00Cd3vIuOAkR8tznQ6CIwKWhLE2lXoRih8gcoFJwVVPmt9o4zC95BNz53FUt0EdCpfcn6P4JqVDswyn/8xSlabnvdZhiKmO8EMhHhFWJO4+gerDqCAIyAPMo4JHgmkFGqrVLyukspJh4wkzFKLR9qWkAWUAzRRwKZGhtctsFb56pH+PI9at3DeZC3uAmvByd0pYvHCVnrx6mK404A3O/iqI/DBDvneu3f9TZmhmg0M=
+        on:
+          tags: true
+          node: '8'
+          repo: MitMaro/node-errors-not-here-yet
+
+
+# --require @babel/register
