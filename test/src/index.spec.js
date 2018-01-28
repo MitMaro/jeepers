@@ -1,8 +1,10 @@
-import {
+'use strict';
+
+const {
 	BaseError,
-	RuntimeError,
 	ErrorHandler,
-} from '../../src/index';
+	RuntimeError,
+} = require('../../src/index');
 
 describe('index', function () {
 	it('should have BaseError', function () {

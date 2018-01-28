@@ -1,4 +1,6 @@
-import {BaseError} from '../../src/index';
+'use strict';
+
+const {BaseError} = require('../../src/index');
 
 // reference: https://github.com/onury/custom-error-test
 function getType(o) {
@@ -7,7 +9,7 @@ function getType(o) {
 
 class CustomError extends BaseError {}
 
-describe('BaseError', function () {
+describe('base-error BaseError', function () {
 	describe('error constructor', function () {
 		it('should be type of function', function () {
 			expect(typeof BaseError).to.equal('function');

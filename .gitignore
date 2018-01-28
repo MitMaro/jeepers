@@ -1,5 +1,7 @@
 .nyc_output/
 coverage/
-lib/
 node_modules/
-jeepers-*.tgz
+lib/
+*.tgz
+yarn.lock
+yarn-error.*

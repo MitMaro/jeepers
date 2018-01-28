@@ -1,5 +1,7 @@
-import chai from 'chai';
-import sinonChai from 'sinon-chai';
+'use strict';
+
+const chai = require('chai');
+const sinonChai = require('sinon-chai');
 
 chai.use(sinonChai);
 

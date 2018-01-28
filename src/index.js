@@ -1,4 +1,7 @@
-export {default as BaseError} from './BaseError';
-export {default as RuntimeError} from './RuntimeError';
+'use strict';
 
-export {default as ErrorHandler} from './ErrorHandler';
+module.exports = {
+	BaseError: require('./base-error'),
+	RuntimeError: require('./runtime-error'),
+	ErrorHandler: require('./error-handler'),
+};
