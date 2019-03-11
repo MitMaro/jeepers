@@ -4,8 +4,10 @@ coverage/
 node_modules/
 src/
 test/
-.babelrc
 .eslintignore
 .eslintrc.js
 .nycrc
+.travis.yml
 jeepers-*.tgz
+yarn.lock
+yarn-error.*
